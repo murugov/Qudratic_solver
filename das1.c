@@ -8,7 +8,7 @@ void* append(double* ptr_data, int* ptr_length, int* ptr_capacity)
     if(*ptr_length > *ptr_capacity)
     {
         *ptr_capacity = *ptr_capacity * 2;
-        double* ptr_list = malloc(sizeof(double) * *ptr_capacity);
+        double* ptr_list = calloc(sizeof(double) * *ptr_capacity, sizeof(double));
         if(ptr_list == NULL)
             return ptr_data;
         for(int i = 0;i < *ptr_length; ++i)
@@ -26,7 +26,7 @@ int main(void)
 {
     int capacity = 5;
     int length = 0;
-    double* ptr_data = malloc(sizeof(double) * capacity);
+    double* ptr_data = calloc(sizeof(double) * capacity, sizeof(double));
  
     FILE* ptr_file = fopen("test_input.txt", "r");
     if(ptr_file == NULL) {
